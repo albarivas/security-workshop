@@ -10,10 +10,6 @@
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <label>Security in Salesforce</label>
     <navType>Standard</navType>
-    <tabs>readExamples</tabs>
-    <tabs>createExamples</tabs>
-    <tabs>sharing</tabs>
-    <tabs>Flow_Examples1</tabs>
     <tabs>soqlInjection</tabs>
     <tabs>xss</tabs>
     <tabs>CSRF_Examples</tabs>

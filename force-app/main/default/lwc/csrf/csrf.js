@@ -1,6 +1,6 @@
 import { LightningElement } from "lwc";
 import { reduceErrors } from "c/ldsUtils";
-import createAccount from "@salesforce/apex/AccountController.createAccountCRUDCheck";
+import createAccount from "@salesforce/apex/AccountController.createAccount";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 export default class Csrf extends LightningElement {
   connectedCallback() {

@@ -14,24 +14,6 @@
         <name>region1</name>
         <type>Region</type>
     </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentName>manualDOMManipulation</componentName>
-            </componentInstance>
-        </itemInstances>
-        <name>region2</name>
-        <type>Region</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentName>lwcDOMManipulation</componentName>
-            </componentInstance>
-        </itemInstances>
-        <name>region3</name>
-        <type>Region</type>
-    </flexiPageRegions>
     <masterLabel>XSS Examples</masterLabel>
     <template>
         <name>flexipage:appHomeTemplateThreeColumns</name>
