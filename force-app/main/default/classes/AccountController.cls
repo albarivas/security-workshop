@@ -87,7 +87,7 @@ public with sharing class AccountController {
 
   /**
    * In this method we try to prevent SOQL Injection
-   * by typecasting
+   * by type casting
    */
   @AuraEnabled(cacheable=true)
   public static List<Account> getFilteredAccounts5(String searchValue) {
@@ -101,7 +101,7 @@ public with sharing class AccountController {
 
     /**
    * In this method we try to prevent SOQL Injection
-   * by allowlisting
+   * by allow listing
    */
   @AuraEnabled(cacheable=true)
   public static List<Account> getFilteredAccounts6(String searchValue) {

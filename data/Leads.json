@@ -1,0 +1,31 @@
+{
+  "records": [
+    {
+      "attributes": {
+        "type": "Lead",
+        "referenceId": "LeadRef1"
+      },
+      "LastName": "Smith",
+      "Company": "Coders We Are",
+      "Rating": "Hot"
+    },
+    {
+      "attributes": {
+        "type": "Lead",
+        "referenceId": "LeadRef2"
+      },
+      "LastName": "Jones",
+      "Company": "E-Bikes",
+      "Rating": "Warm"
+    },
+    {
+      "attributes": {
+        "type": "Lead",
+        "referenceId": "LeadRef3"
+      },
+      "LastName": "Wang",
+      "Company": "Codey Codes",
+      "Rating": "Cold"
+    }
+  ]
+}
