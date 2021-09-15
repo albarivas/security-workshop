@@ -7,7 +7,8 @@
       },
       "Name": "Primitech",
       "AnnualRevenue": "1000000",
-      "Industry": "Engineering"
+      "Industry": "Engineering",
+      "NumberOfEmployees": 50
     },
     {
       "attributes": {
@@ -16,7 +17,8 @@
       },
       "Name": "Northern Trail Cycling",
       "AnnualRevenue": "3000000",
-      "Industry": "Manufacturing"
+      "Industry": "Manufacturing",
+      "NumberOfEmployees": 600
     },
     {
       "attributes": {
@@ -25,7 +27,8 @@
       },
       "Name": "Trailblazers",
       "AnnualRevenue": "2000000",
-      "Industry": "Education"
+      "Industry": "Education",
+      "NumberOfEmployees": 1000
     }
   ]
 }
