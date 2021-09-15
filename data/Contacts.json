@@ -1,0 +1,13 @@
+{
+  "records": [
+    {
+      "attributes": {
+        "type": "Contact",
+        "referenceId": "ContactRef1"
+      },
+      "FirstName": "Julián",
+      "LastName": "Duque",
+      "Title": "alert('Malicious!')"
+    }
+  ]
+}

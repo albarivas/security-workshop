@@ -5,8 +5,7 @@ export default class StoredXss extends LightningElement {
   handleButtonClick() {
     getContactXSS()
       .then((data) => {
-        console.log(data.Name);
-        eval(data.Name);
+        eval(data.Title);
       })
       .catch((error) => {
         console.error(error);
