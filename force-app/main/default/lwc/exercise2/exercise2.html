@@ -1,0 +1,19 @@
+<template>
+  <lightning-card title="XSS -  Exercise 2">
+    <div class="slds-var-p-around_medium">
+      <p>
+        Your turn! The code works great when using <code>1,2,3</code>.
+        But what happens if you indicate <code>]; alert('Malicious!'); const other = [</code>?
+        Fix this XSS problem.
+      </p>
+    </div>
+    <lightning-input
+      class="slds-m-around_small"
+      type="text"
+      label="Numbers:"
+      value={numbers}
+      onchange={handleInputChange}
+    ></lightning-input>
+    <div class="slds-m-around_small">{summary}</div>
+  </lightning-card>
+</template>
