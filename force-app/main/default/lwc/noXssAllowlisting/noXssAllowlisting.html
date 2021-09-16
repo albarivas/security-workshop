@@ -1,0 +1,19 @@
+<template>
+  <lightning-card title="XSS - No XSS Allow Listing">
+    <div class="slds-var-p-around_medium">
+      <p>
+        Here we apply allow listing (input filtering) to prevent XSS. To see this example in
+        action, enter <code>alert('Malicious!')</code>
+        in the input instead of a color. It won't work. 
+      </p>
+    </div>
+    <lightning-input
+      class="slds-m-around_small"
+      type="text"
+      label="Color:"
+      value={color}
+      onchange={handleInputChange}
+    ></lightning-input>
+    <div class="paint slds-m-around_small">PAINT ME!</div>
+  </lightning-card>
+</template>
