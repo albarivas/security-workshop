@@ -1,0 +1,18 @@
+<template>
+  <lightning-card title="XSS - No XSS Block Listing">
+    <div class="slds-var-p-around_medium">
+      <p>
+        Here we apply block listing (input filtering) to prevent XSS. To see
+        this example in action, enter <code>alert('Malicious!')</code>. It won't
+        work.
+      </p>
+    </div>
+    <lightning-input
+      class="slds-m-around_small"
+      type="text"
+      label="Input:"
+      value={searchValue}
+      onchange={handleInputChange}
+    ></lightning-input>
+  </lightning-card>
+</template>

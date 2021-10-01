@@ -13,7 +13,12 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
-                <componentName>exercise2</componentName>
+                <componentName>noXssOutputEncoding</componentName>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>noXssOutputEncoding</componentName>
             </componentInstance>
         </itemInstances>
         <name>region1</name>
@@ -27,7 +32,12 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
-                <componentName>csp</componentName>
+                <componentName>noXssAllowlisting</componentName>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>noXssCsp</componentName>
             </componentInstance>
         </itemInstances>
         <name>region2</name>
@@ -41,7 +51,12 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
-                <componentName>noXssAllowlisting</componentName>
+                <componentName>noXssBlocklisting</componentName>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>exercise2</componentName>
             </componentInstance>
         </itemInstances>
         <name>region3</name>
