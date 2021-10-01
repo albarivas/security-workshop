@@ -8,7 +8,7 @@
     <formFactors>Large</formFactors>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
-    <label>Security in Salesforce</label>
+    <label>Security Workshop</label>
     <navType>Standard</navType>
     <tabs>soqlInjection</tabs>
     <tabs>xss</tabs>

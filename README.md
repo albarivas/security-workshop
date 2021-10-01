@@ -3,7 +3,7 @@
 1. Clone the repo:
 
    ```
-   git clone git@github.com:albarivas/security.git
+   git clone git@github.com:albarivas/security-workshop.git
    ```
 
 1. If you haven't already done so, authorize with your hub org and provide it with an alias (**myhuborg** in the command below):
@@ -27,7 +27,7 @@
 1. Assign the **Security** permission set to the default user:
 
    ```
-   sfdx force:user:permset:assign -n Security
+   sfdx force:user:permset:assign -n security
    ```
 
 1. Import sample data:
