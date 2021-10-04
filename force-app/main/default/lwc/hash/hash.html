@@ -1,11 +1,21 @@
 <template>
   <lightning-card title="Hash Digests">
-    <p>Generate hash digest using MD5, SHA1, SHA256 and SHA512.</p>
-    <lightning-button
-      class="slds-align_absolute-center"
-      label="Generate Hash Digest"
-      onclick={handleButtonClick}
-    ></lightning-button>
-    {hash}
+    <div class="slds-var-p-around_medium">
+      <p>Generate hash digest using MD5, SHA1, SHA256 and SHA512.</p>
+      <div class="slds-var-m-top_medium">
+        <lightning-button
+          label="Generate Hash Digest in Origin"
+          onclick={handleOriginButtonClick}
+        ></lightning-button>
+        <lightning-button
+          label="Generate Hash Digest in Destination"
+          onclick={handleDestinationButtonClick}
+        ></lightning-button>
+      </div>
+      <p class="slds-var-m-top_medium slds-truncate">
+        Hash in origin: {originHash}
+      </p>
+      <p class="slds-truncate">Hash in destination: {destinationHash}</p>
+    </div>
   </lightning-card>
 </template>

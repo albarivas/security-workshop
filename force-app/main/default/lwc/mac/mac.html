@@ -1,11 +1,21 @@
 <template>
   <lightning-card title="Mac">
-    <p>Generate mac using HMACMD5, HMACSHA1, HMACSHA256, and HMAC512.</p>
-    <lightning-button
-      class="slds-align_absolute-center"
-      label="Generate Mac"
-      onclick={handleButtonClick}
-    ></lightning-button>
-    {mac}
+    <div class="slds-var-p-around_medium">
+      <p>Generate mac using HMACMD5, HMACSHA1, HMACSHA256, and HMAC512.</p>
+      <div class="slds-var-m-top_medium">
+        <lightning-button
+          label="Generate MAC in Origin"
+          onclick={handleOriginButtonClick}
+        ></lightning-button>
+        <lightning-button
+          label="Generate MAC in Destination"
+          onclick={handleDestinationButtonClick}
+        ></lightning-button>
+      </div>
+      <p class="slds-var-m-top_medium slds-truncate">
+        Mac in origin: {originMac}
+      </p>
+      <p class="slds-truncate">Mac in destination: {destinationMac}</p>
+    </div>
   </lightning-card>
 </template>

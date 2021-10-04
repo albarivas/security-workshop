@@ -1,11 +1,19 @@
 <template>
   <lightning-card title="Encryption">
-    <p>Encrypt / decrypt using AES128, AES192, and AES256.</p>
-    <lightning-button
-      class="slds-align_absolute-center"
-      label="Encrypt"
-      onclick={handleButtonClick}
-    ></lightning-button>
-    {encryptedValue}
+    <div class="slds-var-p-around_medium">
+      <p>Encrypt / decrypt using AES128, AES192, and AES256.</p>
+      <div class="slds-var-m-top_medium">
+        <lightning-button
+          label="Encrypt"
+          onclick={handleEncryptButtonClick}
+        ></lightning-button>
+        <lightning-button
+          label="Decrypt"
+          onclick={handleDecryptButtonClick}
+        ></lightning-button>
+      </div>
+      <p class="slds-var-m-top_medium">Encrypted value: {encryptedValue}</p>
+      <p>Decrypted value: {decryptedValue}</p>
+    </div>
   </lightning-card>
 </template>

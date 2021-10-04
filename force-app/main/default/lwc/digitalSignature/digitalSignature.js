@@ -1,18 +1,36 @@
 import { LightningElement } from "lwc";
 import { reduceErrors } from "c/ldsUtils";
-import digitalSignature from "@salesforce/apex/Encryption.digitalSignature";
+import originDigitalSign from "@salesforce/apex/Encryption.originDigitalSignature";
+import destinationDigitalSign from "@salesforce/apex/Encryption.destinationDigitalSignature";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
 export default class DigitalSignature extends LightningElement {
-  digitalSignature;
-  handleButtonClick() {
-    digitalSignature()
+  originDigitalSignature;
+  destinationDigitalSignature;
+
+  handleOriginButtonClick() {
+    originDigitalSign()
       .then((data) => {
-        this.digitalSignature = data;
+        this.originDigitalSignature = data;
       })
       .catch((error) => {
         const toastEvent = new ShowToastEvent({
-          title: "Error generating digital signature",
+          title: "Error generating origin digital signature",
+          message: "Error: " + reduceErrors(error).join(","),
+          variant: "error"
+        });
+        this.dispatchEvent(toastEvent);
+      });
+  }
+
+  handleDestinationButtonClick() {
+    destinationDigitalSign()
+      .then((data) => {
+        this.destinationDigitalSignature = data;
+      })
+      .catch((error) => {
+        const toastEvent = new ShowToastEvent({
+          title: "Error generating destination digital signature",
           message: "Error: " + reduceErrors(error).join(","),
           variant: "error"
         });

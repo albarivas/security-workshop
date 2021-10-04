@@ -16,11 +16,6 @@
                 <componentName>noXssOutputEncoding</componentName>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentName>noXssOutputEncoding</componentName>
-            </componentInstance>
-        </itemInstances>
         <name>region1</name>
         <type>Region</type>
     </flexiPageRegions>
