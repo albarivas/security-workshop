@@ -25,7 +25,7 @@ public with sharing class Encryption {
 
     Blob encryptedData = Crypto.encryptWithManagedIV('AES256', AES_KEY, data);
 
-    // Encode Blob in Base64
+    // Encode Blob in Base64 to see it as String for convenience
     return EncodingUtil.base64Encode(encryptedData);
   }
 
@@ -50,7 +50,7 @@ public with sharing class Encryption {
 
     Blob hash = Crypto.generateDigest('SHA512', data);
 
-    // Encode Blob in Base64
+    // Encode Blob in Base64 to see it as String for convenience
     return EncodingUtil.base64Encode(hash);
   }
 
@@ -62,7 +62,7 @@ public with sharing class Encryption {
     Blob hash = Crypto.generateDigest('SHA512', receivedData);
 
     // receivedHash and hash should  be identical!
-    // Encode Blob in Base64
+    // Encode Blob in Base64 to see it as String for convenience
     return EncodingUtil.base64Encode(hash);
   }
 
@@ -73,7 +73,7 @@ public with sharing class Encryption {
 
     Blob mac = Crypto.generateMac('hmacSHA512', data, OTHER_PRIVATE_KEY);
 
-    // Encode Blob in Base64
+    // Encode Blob in Base64 to see it as String for convenience
     return EncodingUtil.base64Encode(mac);
   }
 
@@ -89,7 +89,7 @@ public with sharing class Encryption {
     );
 
     // receivedMac and mac should  be identical!
-    // Encode Blob in Base64
+    // Encode Blob in Base64 to see it as String for convenience
     return EncodingUtil.base64Encode(mac);
   }
 
@@ -102,7 +102,7 @@ public with sharing class Encryption {
 
     Blob digitalSignature = Crypto.sign('RSA', data, PKCS8_PRIVATE_KEY);
 
-    // Encode Blob in Base64
+    // Encode Blob in Base64 to see it as String for convenience
     return EncodingUtil.base64Encode(digitalSignature);
   }
 
@@ -114,7 +114,7 @@ public with sharing class Encryption {
     Blob digitalSignature = Crypto.sign('RSA', receivedData, PKCS8_PRIVATE_KEY);
 
     // receivedMac and mac should  be identical!
-    // Encode Blob in Base64
+    // Encode Blob in Base64 to see it as String for convenience
     return EncodingUtil.base64Encode(digitalSignature);
   }
 }
