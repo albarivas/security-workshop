@@ -1,4 +1,10 @@
-# Code Examples that show how to enforce security in Apex and LWC
+# Code Examples that show how to prevent common security vulnerabilities in Apex and LWC
+
+Pre-requisites:
+
+1. Sign-up for a Developer Org at [sfdc.co/devorg](sfdc.co/devorg)
+
+1. Setup Developer Tools as explained in [sfdc.co/setupdevtools](sfdc.co/setupdevtools)
 
 1. Clone the repo:
 
