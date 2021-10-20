@@ -2,7 +2,7 @@ import { LightningElement, wire } from "lwc";
 import { reduceErrors } from "c/ldsUtils";
 import NAME_FIELD from "@salesforce/schema/Account.Name";
 import INDUSTRY_FIELD from "@salesforce/schema/Account.Industry";
-import getFilteredAccounts from "@salesforce/apex/AccountController.getFilteredAccounts";
+import getFilteredAccounts from "@salesforce/apex/AccountController.getFilteredAccountsStaticQuery";
 
 const COLUMNS = [
   { label: "Account Name", fieldName: NAME_FIELD.fieldApiName, type: "text" },

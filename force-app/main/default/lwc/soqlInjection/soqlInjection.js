@@ -13,7 +13,9 @@ export default class SoqlInjection extends LightningElement {
   columns = COLUMNS;
   searchValue = "";
 
-  @wire(getFilteredAccountsInjection, { searchValue: "$searchValue" })
+  @wire(getFilteredAccountsInjection, {
+    searchValue: "$searchValue"
+  })
   accounts;
 
   get errors() {

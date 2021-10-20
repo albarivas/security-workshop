@@ -20,8 +20,10 @@ public with sharing class AccountController {
    * and could be interpreted as part of que query
    */
   @AuraEnabled(cacheable=true)
-  public static List<Account> getFilteredAccountsInjection2(String searchValue) {
-    String filterValue = String.isEmpty(searchValue)? '0': searchValue;
+  public static List<Account> getFilteredAccountsInjection2(
+    String searchValue
+  ) {
+    String filterValue = String.isEmpty(searchValue) ? '0' : searchValue;
     return (List<Account>) Database.query(
       'SELECT Name, AnnualRevenue, Industry FROM Account WHERE NumberOfEmployees > ' +
       filterValue +
@@ -34,7 +36,9 @@ public with sharing class AccountController {
    * by making the query static
    */
   @AuraEnabled(cacheable=true)
-  public static List<Account> getFilteredAccounts(String searchValue) {
+  public static List<Account> getFilteredAccountsStaticQuery(
+    String searchValue
+  ) {
     String likeValue = '%' + searchValue + '%';
     return [
       SELECT Name, AnnualRevenue, Industry
@@ -49,7 +53,9 @@ public with sharing class AccountController {
    * by binding the using supplied input with :
    */
   @AuraEnabled(cacheable=true)
-  public static List<Account> getFilteredAccounts2(String searchValue) {
+  public static List<Account> getFilteredAccountsVariableBinding(
+    String searchValue
+  ) {
     String likeValue = '%' + searchValue + '%';
     return (List<Account>) Database.query(
       'SELECT Name, AnnualRevenue, Industry FROM Account WHERE Name LIKE :likeValue ORDER BY Name'
@@ -61,7 +67,7 @@ public with sharing class AccountController {
    * by escaping single quotes - not safe in all cases!
    */
   @AuraEnabled(cacheable=true)
-  public static List<Account> getFilteredAccounts3(String searchValue) {
+  public static List<Account> getFilteredAccountsEscaping(String searchValue) {
     String likeValue = '\'%' + String.escapeSingleQuotes(searchValue) + '%\'';
     return (List<Account>) Database.query(
       'SELECT Name, AnnualRevenue, Industry FROM Account WHERE Name LIKE ' +
@@ -76,8 +82,12 @@ public with sharing class AccountController {
    * doesn't fix the problem
    */
   @AuraEnabled(cacheable=true)
-  public static List<Account> getFilteredAccounts4(String searchValue) {
-    String filterValue = String.isEmpty(searchValue)? '0': String.escapeSingleQuotes(searchValue);
+  public static List<Account> getFilteredAccountsEscapingNotEffective(
+    String searchValue
+  ) {
+    String filterValue = String.isEmpty(searchValue)
+      ? '0'
+      : String.escapeSingleQuotes(searchValue);
     return (List<Account>) Database.query(
       'SELECT Name, AnnualRevenue, Industry FROM Account WHERE NumberOfEmployees > ' +
       filterValue +
@@ -90,8 +100,12 @@ public with sharing class AccountController {
    * by type casting
    */
   @AuraEnabled(cacheable=true)
-  public static List<Account> getFilteredAccounts5(String searchValue) {
-    Integer filterValue = String.isEmpty(searchValue)? 0: Integer.valueOf(searchValue);
+  public static List<Account> getFilteredAccountsTypeCasting(
+    String searchValue
+  ) {
+    Integer filterValue = String.isEmpty(searchValue)
+      ? 0
+      : Integer.valueOf(searchValue);
     return (List<Account>) Database.query(
       'SELECT Name, AnnualRevenue, Industry FROM Account WHERE NumberOfEmployees > ' +
       filterValue +
@@ -99,19 +113,23 @@ public with sharing class AccountController {
     );
   }
 
-    /**
+  /**
    * In this method we try to prevent SOQL Injection
    * by allow listing
    */
   @AuraEnabled(cacheable=true)
-  public static List<Account> getFilteredAccounts6(String searchValue) {
-    Map<String,Integer> allowedValues = new Map<String,Integer>();
-    allowedValues.put('100',100);
-    allowedValues.put('500',500);
-    allowedValues.put('1000',1000);
+  public static List<Account> getFilteredAccountsAllowListing(
+    String searchValue
+  ) {
+    Map<String, Integer> allowedValues = new Map<String, Integer>();
+    allowedValues.put('100', 100);
+    allowedValues.put('500', 500);
+    allowedValues.put('1000', 1000);
+
     Integer filterValue = allowedValues.get(searchValue);
+
     if (filterValue == null) {
-        filterValue = 0;
+      filterValue = 0;
     }
     return (List<Account>) Database.query(
       'SELECT Name, AnnualRevenue, Industry FROM Account WHERE NumberOfEmployees > ' +
