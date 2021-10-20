@@ -3,7 +3,7 @@ import getStringXSS from "@salesforce/apex/ContactController.getStringXSS";
 
 export default class ReflectedXss extends LightningElement {
   handleInputChange(event) {
-    getStringXSS(event.detail.value)
+    getStringXSS({ value: event.detail.value })
       .then((data) => {
         eval(data);
       })
