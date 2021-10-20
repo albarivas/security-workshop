@@ -6,7 +6,7 @@ import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
 export default class DigitalSignature extends LightningElement {
   originDigitalSignature;
-  destinationDigitalSignature;
+  correct;
 
   handleOriginButtonClick() {
     originDigitalSign()
@@ -26,7 +26,7 @@ export default class DigitalSignature extends LightningElement {
   handleDestinationButtonClick() {
     destinationDigitalSign()
       .then((data) => {
-        this.destinationDigitalSignature = data;
+        this.correct = data;
       })
       .catch((error) => {
         const toastEvent = new ShowToastEvent({

@@ -1,29 +1,14 @@
 public with sharing class Encryption {
-  static final Blob AES_KEY = Crypto.generateAesKey(256);
-  static final Blob OTHER_PRIVATE_KEY = Blob.valueOf('secret key');
-  static final Blob PKCS8_PRIVATE_KEY = EncodingUtil.base64Decode(
-    'MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAKNwapOQ6rQJHetP\n' +
-    'HRlJBIh1OsOsUBiXb3rXXE3xpWAxAha0MH+UPRblOko+5T2JqIb+xKf9Vi3oTM3t\n' +
-    'KvffaOPtzKXZauscjq6NGzA3LgeiMy6q19pvkUUOlGYK6+Xfl+B7Xw6+hBMkQuGE\n' +
-    'nUS8nkpR5mK4ne7djIyfHFfMu4ptAgMBAAECgYA+s0PPtMq1osG9oi4xoxeAGikf\n' +
-    'JB3eMUptP+2DYW7mRibc+ueYKhB9lhcUoKhlQUhL8bUUFVZYakP8xD21thmQqnC4\n' +
-    'f63asad0ycteJMLb3r+z26LHuCyOdPg1pyLk3oQ32lVQHBCYathRMcVznxOG16VK\n' +
-    'I8BFfstJTaJu0lK/wQJBANYFGusBiZsJQ3utrQMVPpKmloO2++4q1v6ZR4puDQHx\n' +
-    'TjLjAIgrkYfwTJBLBRZxec0E7TmuVQ9uJ+wMu/+7zaUCQQDDf2xMnQqYknJoKGq+\n' +
-    'oAnyC66UqWC5xAnQS32mlnJ632JXA0pf9pb1SXAYExB1p9Dfqd3VAwQDwBsDDgP6\n' +
-    'HD8pAkEA0lscNQZC2TaGtKZk2hXkdcH1SKru/g3vWTkRHxfCAznJUaza1fx0wzdG\n' +
-    'GcES1Bdez0tbW4llI5By/skZc2eE3QJAFl6fOskBbGHde3Oce0F+wdZ6XIJhEgCP\n' +
-    'iukIcKZoZQzoiMJUoVRrA5gqnmaYDI5uRRl/y57zt6YksR3KcLUIuQJAd242M/WF\n' +
-    '6YAZat3q/wEeETeQq1wrooew+8lHl05/Nt0cCpV48RGEhJ83pzBm3mnwHf8lTBJH\n' +
-    'x6XroMXsmbnsEw=='
-  );
-
   // Encrypts data with symmetric key --> secrecy
   @AuraEnabled
   public static String encryptAES256() {
     Blob data = Blob.valueOf('Test data');
 
-    Blob encryptedData = Crypto.encryptWithManagedIV('AES256', AES_KEY, data);
+    Blob encryptedData = Crypto.encryptWithManagedIV(
+      'AES256',
+      Keys.AES_KEY,
+      data
+    );
 
     // Encode Blob in Base64 to see it as String for convenience
     return EncodingUtil.base64Encode(encryptedData);
@@ -36,7 +21,7 @@ public with sharing class Encryption {
     // IV will be the first 128 bits (16 bytes) of the received data
     Blob data = Crypto.decryptWithManagedIV(
       'AES256',
-      AES_KEY,
+      Keys.AES_KEY,
       EncodingUtil.base64Decode(encryptedData)
     );
 
@@ -71,7 +56,7 @@ public with sharing class Encryption {
   public static String originMacHMAC512() {
     Blob data = Blob.valueOf('Test data');
 
-    Blob mac = Crypto.generateMac('hmacSHA512', data, OTHER_PRIVATE_KEY);
+    Blob mac = Crypto.generateMac('hmacSHA512', data, Keys.OTHER_PRIVATE_KEY);
 
     // Encode Blob in Base64 to see it as String for convenience
     return EncodingUtil.base64Encode(mac);
@@ -85,7 +70,7 @@ public with sharing class Encryption {
     Blob mac = Crypto.generateMac(
       'hmacSHA512',
       receivedData,
-      OTHER_PRIVATE_KEY
+      Keys.OTHER_PRIVATE_KEY
     );
 
     // receivedMac and mac should  be identical!
@@ -100,7 +85,7 @@ public with sharing class Encryption {
 
     Blob data = Blob.valueOf('Test data');
 
-    Blob digitalSignature = Crypto.sign('RSA', data, PKCS8_PRIVATE_KEY);
+    Blob digitalSignature = Crypto.sign('RSA', data, Keys.PKCS8_PRIVATE_KEY);
 
     // Encode Blob in Base64 to see it as String for convenience
     return EncodingUtil.base64Encode(digitalSignature);
@@ -111,10 +96,13 @@ public with sharing class Encryption {
     String receivedSignature = originDigitalSignature();
     Blob receivedData = Blob.valueOf('Test data');
 
-    Blob digitalSignature = Crypto.sign('RSA', receivedData, PKCS8_PRIVATE_KEY);
+    Boolean correct = Crypto.verify(
+      'RSA',
+      receivedData,
+      EncodingUtil.base64Decode(receivedSignature),
+      Keys.PKCS8_PUBLIC_KEY
+    );
 
-    // receivedMac and mac should  be identical!
-    // Encode Blob in Base64 to see it as String for convenience
-    return EncodingUtil.base64Encode(digitalSignature);
+    return correct + '';
   }
 }
