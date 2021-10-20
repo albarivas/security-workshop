@@ -1,5 +1,5 @@
 import { LightningElement } from "lwc";
-export default class NoXssBlocklisting extends LightningElement {
+export default class NoXssInputValidation extends LightningElement {
   handleInputChange(event) {
     let input = event.detail.value;
     if (input.includes("alert(")) {
