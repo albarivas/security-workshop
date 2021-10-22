@@ -56,7 +56,7 @@ public with sharing class Encryption {
   public static String originMacHMAC512() {
     Blob data = Blob.valueOf('Test data');
 
-    Blob mac = Crypto.generateMac('hmacSHA512', data, Keys.OTHER_PRIVATE_KEY);
+    Blob mac = Crypto.generateMac('hmacSHA512', data, Keys.HMAC_KEY);
 
     // Encode Blob in Base64 to see it as String for convenience
     return EncodingUtil.base64Encode(mac);
@@ -67,18 +67,15 @@ public with sharing class Encryption {
     String receivedMac = originHashSHA512();
     Blob receivedData = Blob.valueOf('Test data');
 
-    Blob mac = Crypto.generateMac(
-      'hmacSHA512',
-      receivedData,
-      Keys.OTHER_PRIVATE_KEY
-    );
+    Blob mac = Crypto.generateMac('hmacSHA512', receivedData, Keys.HMAC_KEY);
 
     // receivedMac and mac should  be identical!
     // Encode Blob in Base64 to see it as String for convenience
     return EncodingUtil.base64Encode(mac);
   }
 
-  // Hash of the message is encrypted with the private key of the sender --> integrity, authenticity and no-repudiation
+  // Hash of the message is encrypted with the private key of the sender,
+  // and decrypted with his/her public key (asymmetric) --> integrity, authenticity and no-repudiation
   @AuraEnabled
   public static String originDigitalSignature() {
     // Use private key (must be in RSA's PKCS #8 (1.2) Private-Key Information Syntax Standard form)
